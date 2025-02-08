@@ -1,2 +1,9 @@
 @import "tailwindcss";
 
+@utility container{
+    @apply mx-auto;
+}
+
+.btn-dark-primary{
+    @apply text-sky-300 border-sky-950 bg-sky-950 cursor-pointer  hover:bg-sky-950/90 transition-all hover:text-sky-400 hover:border-sky-950/90 duration-200;
+}

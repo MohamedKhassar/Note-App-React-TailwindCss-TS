@@ -42,7 +42,7 @@ const Signin = () => {
             <p>
               I don't have an account
             </p>
-            <Link className="font-semibold underline text-sky-700" to={""}>Sign-up</Link>
+            <Link className="font-semibold underline text-sky-700" to={"/sign-up"}>Sign-up</Link>
           </div>
         </div>
       </div>

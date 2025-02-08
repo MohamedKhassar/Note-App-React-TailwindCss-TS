@@ -1,14 +1,17 @@
-import { Navigate, Route, Routes } from "react-router-dom"
+import {  Route, Routes } from "react-router-dom"
 import SignIn from "./components/auth/SignIn"
 import SignUp from "./components/auth/SignUp"
+import Home from "./components/Home"
 const App = () => {
   return (
     <Routes>
-      <Route
-        path="*"
+      {/* <Route
+        path="/"
         element={<Navigate to="/signin" replace />}
-      />      <Route path="/signin" element={<SignIn />} />
-      <Route path="/signup" element={<SignUp />} />
+      />       */}
+      <Route path="/" element={<Home />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/sign-up" element={<SignUp />} />
     </Routes>
   )
 }
