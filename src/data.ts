@@ -1,4 +1,5 @@
 export type Note = {
+  id:number
   title: string;
   content: string;
   date: Date;
@@ -8,8 +9,9 @@ export type Note = {
   textColor: string;
   backgroundColor: string;
 };
-export const notes: Note[] = [
+export const notes: Note[] =[
   {
+    id: 1, // Add a unique id
     title: "Note 1",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non felis vel lectus consectetur ultricies et vitae turpis. Sed vel turpis vel velit ultricies posuere.",
@@ -21,6 +23,7 @@ export const notes: Note[] = [
     backgroundColor: "#383D42",
   },
   {
+    id: 2, // Add a unique id
     title: "Note 2",
     content:
       "This is a note about React and its ecosystem. React is a popular JavaScript library for building user interfaces.",
@@ -32,6 +35,7 @@ export const notes: Note[] = [
     backgroundColor: "#FFD700",
   },
   {
+    id: 3, // Add a unique id
     title: "Note 3",
     content:
       "A note about TypeScript and its benefits for large-scale applications. TypeScript adds static typing to JavaScript.",
@@ -43,6 +47,7 @@ export const notes: Note[] = [
     backgroundColor: "#2E8B57",
   },
   {
+    id: 4, // Add a unique id
     title: "Note 4",
     content:
       "Exploring Node.js and its use in building scalable backend systems. Node.js is a runtime environment for executing JavaScript on the server.",
@@ -54,6 +59,7 @@ export const notes: Note[] = [
     backgroundColor: "#87CEEB",
   },
   {
+    id: 5, // Add a unique id
     title: "Note 5",
     content:
       "A note about CSS frameworks like Tailwind CSS and Bootstrap. These frameworks help in building responsive and modern UIs.",
@@ -65,6 +71,7 @@ export const notes: Note[] = [
     backgroundColor: "#6A5ACD",
   },
   {
+    id: 6, // Add a unique id
     title: "Note 6",
     content:
       "Understanding state management in React using Redux and Context API. State management is crucial for complex applications.",
@@ -75,7 +82,7 @@ export const notes: Note[] = [
     textColor: "#000000",
     backgroundColor: "#FFA07A",
   },
-];
+];;
 
 
 export const colors:{textColor:string,backgroundColor:string}[]=[

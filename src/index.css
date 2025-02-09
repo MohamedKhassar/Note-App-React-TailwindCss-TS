@@ -7,6 +7,9 @@
 .btn-dark-primary{
     @apply text-sky-300 border-sky-950 bg-sky-950  hover:bg-sky-950/90 transition-colors hover:text-sky-400 hover:border-sky-950/90 duration-200;
 }
+.btn-dark-delete{
+    @apply text-red-200 border-red-700 bg-red-700  hover:bg-red-700/90 transition-colors hover:text-red-100 hover:border-red-700/90 duration-200;
+}
 
 .btn{
     @apply flex items-center border rounded-2xl px-5 lg:w-fit h-full cursor-pointer justify-center capitalize font-semibold;

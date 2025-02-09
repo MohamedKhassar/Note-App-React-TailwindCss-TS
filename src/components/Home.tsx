@@ -1,10 +1,10 @@
-import { Notebook, Plus, XCircle } from "lucide-react"
+import { Plus } from "lucide-react"
 import Navbar from "./Navbar"
-import { useState } from "react";
+import {  useState } from "react";
 import { notes } from "../data";
-import NoteCard from "./NoteCard";
 import CreateForm from "./CreateForm";
 import SearchComponent from "./SearchComponent";
+import Notes from "./Notes";
 
 const Home = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -34,22 +34,8 @@ const Home = () => {
                     </div>
                 </div>
                 <hr className="my-6 text-sky-600 border rounded-2xl" />
-                <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-3 px-3">
-                    {
-                        data.length > 0 ?
-                            data.map(({ backgroundColor, textColor, content, title, pinned, isFavorite, date, tags }, key) =>
-                                <NoteCard key={key} backgroundColor={backgroundColor} textColor={textColor} content={content} title={title} pinned={pinned} isFavorite={isFavorite} tags={tags} date={date} />
-                            )
-                            :
-                            <div className="flex flex-col justify-center items-center col-span-12 relative">
-                                <div className="relative">
-                                    <Notebook className="size-96 -rotate-12 text-sky-700" />
-                                    <XCircle className="size-20 absolute left-0 top-5 fill-red-800 text-red-400" />
-                                </div>
-                            </div>
-                    }
-                </div>
-                <CreateForm isOpen={isOpen} setIsOpen={setIsOpen} />
+                <Notes setData={setData} data={data} />
+                <CreateForm data={data} setData={setData} isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>
         </>
     )

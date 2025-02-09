@@ -1,11 +1,13 @@
 import { Plus, X } from "lucide-react"
-import { Dispatch, FormEvent, SetStateAction, useState } from "react"
+import { Dispatch, FormEvent, SetStateAction, useEffect, useRef, useState } from "react"
 import { colors, Note } from "../data"
 
-const CreateForm = ({isOpen,setIsOpen}:{isOpen:boolean,setIsOpen:Dispatch<SetStateAction<boolean>>}) => {
+const CreateForm = ({ isOpen, setIsOpen,setData,data }: { isOpen: boolean, setIsOpen: Dispatch<SetStateAction<boolean>>,setData:Dispatch<SetStateAction<Note[]>>,data:Note[] }) => {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     const [tag, setTag] = useState("")
+    const ref = useRef<HTMLDivElement>(null)
     const [note, setNote] = useState<Note>({
+        id:data.length+1,
         title: "",
         content: "",
         tags: [],
@@ -41,7 +43,7 @@ const CreateForm = ({isOpen,setIsOpen}:{isOpen:boolean,setIsOpen:Dispatch<SetSta
                 document.querySelector("#tags")?.classList.add("invalid-input")
             }
         } else {
-            // notes=[...notes,]
+            setData(prev=>[...prev, note])
             setNote({
                 ...note, title: "",
                 content: "",
@@ -52,9 +54,35 @@ const CreateForm = ({isOpen,setIsOpen}:{isOpen:boolean,setIsOpen:Dispatch<SetSta
             setIsOpen(false)
         }
     }
+    const closeAndReset = () => {
+        setNote({
+            id: data.length+1,
+            title: "",
+            content: "",
+            tags: [],
+            pinned: false,
+            isFavorite: false,
+            date: new Date(),
+            textColor: randomColor?.textColor,
+            backgroundColor: randomColor?.backgroundColor,
+        })
+        document.querySelectorAll(".invalid-input").forEach(item => item?.classList.remove("invalid-input"))
+        setIsOpen(false)
+    }
+    const clickOutSide = (e: MouseEvent) => {
+        if (ref.current && !ref.current.contains(e.target as Node)) {
+            closeAndReset()
+        }
+    }
+    useEffect(() => {
+        document.addEventListener('mousedown', clickOutSide);
+        return () => {
+            document.removeEventListener('mousedown', clickOutSide);
+        };
+    }, []);
     return (
-        <div className={` bg-black/20 items-center backdrop-blur-3xl fixed h-screen w-full top-0 left-0 ${!isOpen?"invisible opacity-0 delay-300":""} flex justify-center`}>
-            <div className={`bg-white px-5 py-9 rounded-2xl w-[30rem]  mx-4 relative ${isOpen?"":"opacity-0 scale-90"} transition-all duration-300`}>
+        <div className={` bg-black/20 items-center backdrop-blur-3xl fixed h-screen w-full top-0 left-0 ${!isOpen ? "invisible opacity-0 delay-300" : ""} flex justify-center`}>
+            <div ref={ref} className={`bg-white px-5 py-9 rounded-2xl w-[30rem]  mx-4 relative ${isOpen ? "" : "opacity-0 scale-90"} transition-all duration-300`}>
                 <h1 className="text-4xl font-bold text-center text-sky-900">Create a Note</h1>
                 <form onSubmit={handelSubmit} action="" className="mt-9 space-y-4">
                     <div className="flex flex-col gap-y-2">
@@ -85,7 +113,7 @@ const CreateForm = ({isOpen,setIsOpen}:{isOpen:boolean,setIsOpen:Dispatch<SetSta
                     </div>
                     <button onClick={handelSubmit} className="btn-dark-primary btn !w-full !h-13 text-lg">save</button>
                 </form>
-            <X className="absolute right-5 top-5  bg-sky-200 text-sky-800 p-0.5 rounded-2xl size-7 cursor-pointer" onClick={()=>setIsOpen(false)} />
+                <X className="absolute right-5 top-5  bg-sky-200 text-sky-800 p-0.5 rounded-2xl size-7 cursor-pointer" onClick={closeAndReset} />
             </div>
         </div>
     )
