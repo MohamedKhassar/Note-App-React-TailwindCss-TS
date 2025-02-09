@@ -1,6 +1,6 @@
 import { Plus } from "lucide-react"
 import Navbar from "./Navbar"
-import {  useState } from "react";
+import { useState } from "react";
 import { notes } from "../data";
 import CreateForm from "./CreateForm";
 import SearchComponent from "./SearchComponent";
@@ -19,8 +19,32 @@ const Home = () => {
     }))
 
     const filterData = (search: string) => {
-        const filteredData = notes.filter((note) => note.title.toLowerCase().includes(search.toLowerCase()) || note.content.toLowerCase().includes(search.toLowerCase()) || note.tags.find((t) => t.toLowerCase().includes(search.toLowerCase())) || search === "pinned" && note.pinned ||search === "stared" && note.isFavorite)
-        setData(filteredData)
+        let filteredData;
+        const searchLower = search.toLowerCase(); // Convert search term to lowercase once
+
+        if (searchLower === "pinned" || searchLower === "stared") {
+            filteredData = data.filter((note) => {
+                if (searchLower === "pinned") {
+                    return note.pinned;
+                } else if (searchLower === "stared") {
+                    return note.isFavorite;
+                }
+            });
+        } else {
+            filteredData = notes.filter((note) => {
+                const matchesText =
+                    note.title.toLowerCase().includes(searchLower) ||
+                    note.content.toLowerCase().includes(searchLower) ||
+                    note.tags.some((tag) => tag.toLowerCase().includes(searchLower));
+
+
+                // Return true if any of the conditions are met
+                return matchesText;
+            });
+        }
+        if (filteredData) {
+            setData(filteredData)
+        }
     }
     return (
         <>

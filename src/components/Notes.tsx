@@ -7,13 +7,13 @@ import UpdateNote from "./UpdateNote"
 const Notes = ({ data, setData }: { data: Note[], setData: Dispatch<SetStateAction<Note[]>> }) => {
     const [isOpen, setIsOpen] = useState(false)
     const [selectedNote, setSelectedNote] = useState<Note | undefined>()
-    const editPinnedAndFavorite = (index: number, type: "pinned" | "favorite", value: boolean) => {
+    const editPinnedAndFavorite = (id:number, type: "pinned" | "favorite", value: boolean) => {
         try {
 
             if (type === "pinned") {
-                setData(data.map((note, i) => i === index ? { ...note, pinned: value } : note))
+                setData(data.map((note) => note.id === id ? { ...note, pinned: value } : note))
             } else if (type === "favorite") {
-                setData(data.map((note, i) => i === index ? { ...note, isFavorite: value } : note))
+                setData(data.map((note) => note.id === id ? { ...note, isFavorite: value } : note))
             }
         } catch (err) {
             console.log(err)
@@ -31,16 +31,16 @@ const Notes = ({ data, setData }: { data: Note[], setData: Dispatch<SetStateActi
         }
     }
 
-    const selectNote = (key: number) => {
+    const selectNote = (id: number) => {
         setIsOpen(true)
-        setSelectedNote(data[key])
+        setSelectedNote(data.find(note => note.id === id))
     }
     return (
-        <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-3 px-3">
+        <div className="grid grid-cols-[repeat(auto-fill,_minmax(400px,_1fr))] gap-3 px-3">
             {
                 data.length > 0 ?
                     data.map((note, key) =>
-                        <NoteCard onClick={() => selectNote(key)} aria-label="Sample Note Card" index={key} editPinnedAndFavorite={editPinnedAndFavorite} key={key} note={note} />
+                        <NoteCard onClick={() => selectNote(note.id)} aria-label="Sample Note Card" editPinnedAndFavorite={editPinnedAndFavorite} key={key} note={note} />
                     )
                     :
                     <div className="flex flex-col justify-center items-center col-span-12 relative">

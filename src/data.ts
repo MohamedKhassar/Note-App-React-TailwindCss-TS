@@ -9,80 +9,128 @@ export type Note = {
   textColor: string;
   backgroundColor: string;
 };
-export const notes: Note[] =[
+export const notes:Note[] = [
   {
-    id: 1, // Add a unique id
-    title: "Note 1",
+    id: 1,
+    title: "Introduction to JavaScript",
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non felis vel lectus consectetur ultricies et vitae turpis. Sed vel turpis vel velit ultricies posuere.",
-    date: new Date("July/12/2022"),
-    tags: ["Technology", "JavaScript"],
-    pinned: false,
-    isFavorite: false,
-    textColor: "#ffff",
-    backgroundColor: "#383D42",
-  },
-  {
-    id: 2, // Add a unique id
-    title: "Note 2",
-    content:
-      "This is a note about React and its ecosystem. React is a popular JavaScript library for building user interfaces.",
-    date: new Date("August 5, 2022"),
-    tags: ["React", "Frontend"],
+      "JavaScript is a versatile programming language used for web development. It allows developers to create dynamic and interactive web pages.",
+    date: new Date("2023-01-15"),
+    tags: ["JavaScript", "Web Development", "Programming"],
     pinned: true,
-    isFavorite: true,
-    textColor: "#000000",
-    backgroundColor: "#FFD700",
-  },
-  {
-    id: 3, // Add a unique id
-    title: "Note 3",
-    content:
-      "A note about TypeScript and its benefits for large-scale applications. TypeScript adds static typing to JavaScript.",
-    date: new Date("September 20, 2022"),
-    tags: ["TypeScript", "JavaScript"],
-    pinned: false,
     isFavorite: true,
     textColor: "#ffffff",
     backgroundColor: "#2E8B57",
   },
   {
-    id: 4, // Add a unique id
-    title: "Note 4",
+    id: 2,
+    title: "Understanding Cybersecurity",
     content:
-      "Exploring Node.js and its use in building scalable backend systems. Node.js is a runtime environment for executing JavaScript on the server.",
-    date: new Date("October 15, 2022"),
-    tags: ["Node.js", "Backend"],
+      "Cybersecurity involves protecting systems, networks, and data from digital attacks. Common practices include using firewalls, encryption, and multi-factor authentication.",
+    date: new Date("2023-02-10"),
+    tags: ["Cybersecurity", "Networking", "Encryption"],
+    pinned: false,
+    isFavorite: true,
+    textColor: "#000000",
+    backgroundColor: "#FFD700",
+  },
+  {
+    id: 3,
+    title: "Cloud Computing Basics",
+    content:
+      "Cloud computing allows users to access and store data over the internet instead of on local hardware. Popular cloud providers include AWS, Google Cloud, and Microsoft Azure.",
+    date: new Date("2023-03-05"),
+    tags: ["Cloud Computing", "AWS", "Google Cloud"],
     pinned: true,
     isFavorite: false,
-    textColor: "#000000",
+    textColor: "#ffffff",
     backgroundColor: "#87CEEB",
   },
   {
-    id: 5, // Add a unique id
-    title: "Note 5",
+    id: 4,
+    title: "Getting Started with Python",
     content:
-      "A note about CSS frameworks like Tailwind CSS and Bootstrap. These frameworks help in building responsive and modern UIs.",
-    date: new Date("November 10, 2022"),
-    tags: ["CSS", "Tailwind", "Bootstrap"],
+      "Python is a high-level programming language known for its simplicity and readability. It is widely used in data science, machine learning, and web development.",
+    date: new Date("2023-04-20"),
+    tags: ["Python", "Programming", "Data Science"],
     pinned: false,
     isFavorite: false,
+    textColor: "#000000",
+    backgroundColor: "#FFA07A",
+  },
+  {
+    id: 5,
+    title: "Introduction to Machine Learning",
+    content:
+      "Machine learning is a subset of artificial intelligence that enables systems to learn from data and improve over time. Common algorithms include linear regression and neural networks.",
+    date: new Date("2023-05-12"),
+    tags: ["Machine Learning", "AI", "Data Science"],
+    pinned: true,
+    isFavorite: true,
     textColor: "#ffffff",
     backgroundColor: "#6A5ACD",
   },
   {
-    id: 6, // Add a unique id
-    title: "Note 6",
+    id: 6,
+    title: "Database Management with SQL",
     content:
-      "Understanding state management in React using Redux and Context API. State management is crucial for complex applications.",
-    date: new Date("December 1, 2022"),
-    tags: ["React", "Redux", "State Management"],
+      "SQL (Structured Query Language) is used to manage and manipulate relational databases. It is essential for tasks like querying, updating, and deleting data.",
+    date: new Date("2023-06-18"),
+    tags: ["SQL", "Database", "Backend"],
+    pinned: false,
+    isFavorite: false,
+    textColor: "#ffffff",
+    backgroundColor: "#383D42",
+  },
+  {
+    id: 7,
+    title: "DevOps Principles",
+    content:
+      "DevOps is a set of practices that combines software development (Dev) and IT operations (Ops). It aims to shorten the development lifecycle and deliver high-quality software.",
+    date: new Date("2023-07-25"),
+    tags: ["DevOps", "CI/CD", "Automation"],
     pinned: true,
     isFavorite: true,
     textColor: "#000000",
-    backgroundColor: "#FFA07A",
+    backgroundColor: "#FF6347",
   },
-];;
+  {
+    id: 8,
+    title: "Blockchain Technology",
+    content:
+      "Blockchain is a decentralized digital ledger used to record transactions across multiple computers. It is the underlying technology behind cryptocurrencies like Bitcoin.",
+    date: new Date("2023-08-30"),
+    tags: ["Blockchain", "Cryptocurrency", "Decentralization"],
+    pinned: false,
+    isFavorite: false,
+    textColor: "#ffffff",
+    backgroundColor: "#2F4F4F",
+  },
+  {
+    id: 9,
+    title: "Web Development with React",
+    content:
+      "React is a JavaScript library for building user interfaces. It allows developers to create reusable UI components and build single-page applications.",
+    date: new Date("2023-09-14"),
+    tags: ["React", "Web Development", "JavaScript"],
+    pinned: true,
+    isFavorite: true,
+    textColor: "#000000",
+    backgroundColor: "#00CED1",
+  },
+  {
+    id: 10,
+    title: "Introduction to Docker",
+    content:
+      "Docker is a platform for developing, shipping, and running applications in containers. It simplifies deployment and ensures consistency across environments.",
+    date: new Date("2023-10-05"),
+    tags: ["Docker", "Containers", "DevOps"],
+    pinned: false,
+    isFavorite: false,
+    textColor: "#ffffff",
+    backgroundColor: "#8A2BE2",
+  },
+];
 
 
 export const colors:{textColor:string,backgroundColor:string}[]=[

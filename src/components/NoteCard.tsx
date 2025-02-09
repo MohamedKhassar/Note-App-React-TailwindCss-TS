@@ -1,19 +1,19 @@
-import { Pin, Star } from "lucide-react"
+import { PenBox, Pin, Star } from "lucide-react"
 import { Note } from "../data"
 
 type NoteCardProps = {
-    note:Note
-    index: number
-    editPinnedAndFavorite: (index: number, type: "pinned" | "favorite", value: boolean) => void; // Add onClick to the props
-}& React.HTMLAttributes<HTMLDivElement>;
-const NoteCard: React.FC<NoteCardProps> = ({ note,index, editPinnedAndFavorite,...rest }) => {
+    note: Note
+    editPinnedAndFavorite: (id: number, type: "pinned" | "favorite", value: boolean) => void; // Add onClick to the props
+} & React.HTMLAttributes<SVGElement>;
+const NoteCard: React.FC<NoteCardProps> = ({ note, editPinnedAndFavorite, ...rest }) => {
     return (
-        <div className={`p-6 transition-all duration-300 rounded-xl cursor-pointer flex flex-col justify-between gap-4`} style={{ backgroundColor:note.backgroundColor, color:note. textColor }} {...rest}>
+        <div className={`p-6 transition-all duration-300 rounded-xl cursor-pointer flex flex-col justify-between gap-4`} style={{ backgroundColor: note.backgroundColor, color: note.textColor }}>
             <div className="flex justify-between">
                 <h1 className="text-3xl font-bold">{note.title}</h1>
-                <div className="flex items-center gap-x-6">
-                    <Pin onClick={() => editPinnedAndFavorite(index, "pinned", !note.pinned)} className={`text-sky-400 ${note.pinned ? "fill-sky-400 hover:fill-none hover:rotate-45" : "rotate-45 hover:fill-sky-400"}  transition-all cursor-pointer  duration-300 hover:rotate-0`} />
-                    <Star onClick={() => editPinnedAndFavorite(index, "favorite", !note.isFavorite)} className={`text-amber-400 ${note.isFavorite ? "fill-amber-400" : "hover:fill-amber-400"}  transition-all cursor-pointer duration-300`} />
+                <div className="flex items-center gap-x-6 group">
+                    <PenBox {...rest} className={`transition-all cursor-pointer  duration-300 hover:rotate-0`} />
+                    <Pin onClick={() => editPinnedAndFavorite(note.id, "pinned", !note.pinned)} className={`text-sky-400 ${note.pinned ? "fill-sky-400 hover:fill-none hover:rotate-45" : "rotate-45 hover:fill-sky-400"}  transition-all cursor-pointer  duration-300 hover:rotate-0`} />
+                    <Star onClick={() => editPinnedAndFavorite(note.id, "favorite", !note.isFavorite)} className={`text-amber-400 ${note.isFavorite ? "fill-amber-400" : "hover:fill-amber-400"}  transition-all cursor-pointer duration-300`} />
                 </div>
             </div>
             <p className="text-pretty text-left">{note.content}</p>
