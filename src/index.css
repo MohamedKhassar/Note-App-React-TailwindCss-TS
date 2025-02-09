@@ -7,3 +7,14 @@
 .btn-dark-primary{
     @apply text-sky-300 border-sky-950 bg-sky-950 cursor-pointer  hover:bg-sky-950/90 transition-all hover:text-sky-400 hover:border-sky-950/90 duration-200;
 }
+
+.btn{
+    @apply flex items-center border rounded-2xl px-5 lg:w-fit h-14 justify-center capitalize font-semibold;
+}
+
+.invalid-input{
+    @apply text-red-500 bg-red-500/30;
+}
+.valid-input{
+    @apply border-2 border-green-500 text-green-500 bg-green-500/30;
+}

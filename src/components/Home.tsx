@@ -3,8 +3,10 @@ import Navbar from "./Navbar"
 import { useState } from "react";
 import { notes } from "../data";
 import NoteCard from "./NoteCard";
+import CreateForm from "./CreateForm";
 
 const Home = () => {
+    const [isOpen,setIsOpen]=useState(false)
     const [data, setData] = useState(notes.sort((a, b) => {
         if (a.pinned && !b.pinned) {
             return -1; // `a` comes before `b`
@@ -31,7 +33,7 @@ const Home = () => {
                         <div className="relative flex items-center lg:w-full">
                             <input value={search} onChange={(e) => filterData(e.target.value)} placeholder="Search..." className="ring-inset ring-2 rounded-xl ring-zinc-500 px-5 focus:ring-sky-600 h-13 w-full outline-none" type="search" />
                         </div>
-                        <button className="flex items-center border rounded-2xl px-5 lg:w-fit h-14 justify-center capitalize font-semibold btn-dark-primary">create <Plus /></button>
+                        <button onClick={()=>setIsOpen(true)} className="btn btn-dark-primary">create <Plus /></button>
                     </div>
                 </div>
                 <hr className="my-6 text-sky-600 border rounded-2xl" />
@@ -50,6 +52,7 @@ const Home = () => {
                             </div>
                     }
                 </div>
+                <CreateForm isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>
         </>
     )
