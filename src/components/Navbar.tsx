@@ -1,5 +1,6 @@
 import { User } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [showLogout, setShowLogout] = useState(false)
@@ -18,10 +19,10 @@ const Navbar = () => {
         };
     }, []); return (
         <div className="sticky  z-50 top-0 bg-white/50 backdrop-blur-md px-9 py-5 shadow-xl flex justify-between items-center">
-            <div className="flex items-center flex-wrap gap-4">
+            <Link to={"/"}  className="flex items-center flex-wrap gap-4">
                 <img className="size-8" src="/assets/logo.svg" alt="" />
                 <h1 className="text-3xl text-[#007DFC] font-bold">NotePulse</h1>
-            </div>
+            </Link>
             <div ref={ref} className="relative">
                 <button onClick={() => setShowLogout(prev => !prev)} className="text-sky-900 cursor-pointer bg-sky-200/70 outline-none p-3 hover:bg-sky-200 active:scale-75 transition-all duration-200 rounded-full">
                     <User />

@@ -6,10 +6,10 @@ const Signin = () => {
   const [showPass, setShowPass] = useState(false)
   return (
     <div className="flex flex-col items-center justify-center gap-y-8 h-screen">
-      <div className="flex items-center flex-wrap gap-4">
+      <Link to={"/"} className="flex items-center flex-wrap gap-4">
         <img className="size-8" src="/assets/logo.svg" alt="" />
         <h1 className="text-3xl text-[#007DFC] font-bold">NotePulse</h1>
-      </div>
+      </Link>
       <div className="shadow-2xl space-y-7 rounded-2xl bg-white  border border-zinc-200 lg:w-1/3 md:w-1/2 min-w-[400px] py-7 px-5 ">
           <h1 className="text-3xl font-bold text-sky-800 capitalize text-center">sign in</h1>
         <div className="space-y-4 w-full">
@@ -37,7 +37,7 @@ const Signin = () => {
               <label htmlFor="password" className="left-0 absolute ms-3 capitalize text-sky-700 font-semibold text-sm scale-75 -translate-y-4 z-10 peer-focus/pass:-translate-y-4 peer-focus/pass:z-10 peer-placeholder-shown/pass:z-0 peer-placeholder-shown/pass:translate-y-0 peer-placeholder-shown/pass:scale-100 peer-placeholder-shown/pass:text-sky-700 duration-300 peer-focus/pass:scale-75 tracking-wide peer-invalid:ring-red-700">password</label>
             </div>
           </div>
-          <button className="border-2 border-sky-800 hover:border-sky-800 w-full rounded-xl md:py-3 py-1.5 capitalize font-semibold text-lg text-sky-950 bg-white hover:bg-sky-800 hover:text-sky-100 cursor-pointer duration-500">sign in</button>
+          <button className="btn !w-full btn-dark-primary h-12">sign in</button>
           <div className="relative flex items-center text-sm text-gray-500 gap-x-1">
             <p>
               I don't have an account

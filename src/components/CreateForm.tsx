@@ -1,6 +1,6 @@
 import { Plus, X } from "lucide-react"
 import { Dispatch, FormEvent, SetStateAction, useState } from "react"
-import { colors, Note, notes } from "../data"
+import { colors, Note } from "../data"
 
 const CreateForm = ({isOpen,setIsOpen}:{isOpen:boolean,setIsOpen:Dispatch<SetStateAction<boolean>>}) => {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
@@ -83,7 +83,7 @@ const CreateForm = ({isOpen,setIsOpen}:{isOpen:boolean,setIsOpen:Dispatch<SetSta
                             }
                         </div>
                     </div>
-                    <button onClick={handelSubmit} className="btn-dark-primary btn !w-full">save</button>
+                    <button onClick={handelSubmit} className="btn-dark-primary btn !w-full !h-13 text-lg">save</button>
                 </form>
             <X className="absolute right-5 top-5  bg-sky-200 text-sky-800 p-0.5 rounded-2xl size-7 cursor-pointer" onClick={()=>setIsOpen(false)} />
             </div>
